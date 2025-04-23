@@ -544,3 +544,47 @@ Caused by: java.lang.NumberFormatException: For input string: "86400000#24henmil
         u1_0.user_name=?
 2025-04-23T21:11:43.105+02:00  INFO 26068 --- [auction] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
 2025-04-23T21:41:43.119+02:00  INFO 26068 --- [auction] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-04-23T23:36:37.762+02:00  INFO 10524 --- [auction] [main] com.mirs.auction.AuctionApplication      : Starting AuctionApplication using Java 21.0.4 with PID 10524 (C:\Users\Bitor\Desktop\auction-backend\target\classes started by Bitor in C:\Users\Bitor\Desktop\auction-backend)
+2025-04-23T23:36:37.767+02:00  INFO 10524 --- [auction] [main] com.mirs.auction.AuctionApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-04-23T23:36:39.444+02:00  INFO 10524 --- [auction] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-23T23:36:39.600+02:00  INFO 10524 --- [auction] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 5 JPA repository interfaces.
+2025-04-23T23:36:40.712+02:00  INFO 10524 --- [auction] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-23T23:36:40.749+02:00  INFO 10524 --- [auction] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-23T23:36:40.751+02:00  INFO 10524 --- [auction] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-23T23:36:40.860+02:00  INFO 10524 --- [auction] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-23T23:36:40.861+02:00  INFO 10524 --- [auction] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2950 ms
+2025-04-23T23:36:41.162+02:00  INFO 10524 --- [auction] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-23T23:36:41.272+02:00  INFO 10524 --- [auction] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-23T23:36:41.343+02:00  INFO 10524 --- [auction] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-23T23:36:41.882+02:00  INFO 10524 --- [auction] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-23T23:36:41.949+02:00  INFO 10524 --- [auction] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-23T23:36:42.277+02:00  INFO 10524 --- [auction] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@175f859e
+2025-04-23T23:36:42.280+02:00  INFO 10524 --- [auction] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-23T23:36:42.337+02:00  WARN 10524 --- [auction] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-23T23:36:42.370+02:00  INFO 10524 --- [auction] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-23T23:36:44.596+02:00  INFO 10524 --- [auction] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-23T23:36:44.688+02:00 DEBUG 10524 --- [auction] [main] org.hibernate.SQL                        : 
+    alter table if exists auctions 
+       alter column auc_current_bid set data type numeric(10,2)
+2025-04-23T23:36:44.705+02:00 DEBUG 10524 --- [auction] [main] org.hibernate.SQL                        : 
+    alter table if exists auctions 
+       alter column auc_final_price set data type numeric(10,2)
+2025-04-23T23:36:44.718+02:00 DEBUG 10524 --- [auction] [main] org.hibernate.SQL                        : 
+    alter table if exists bids 
+       alter column bid_amount set data type numeric(10,2)
+2025-04-23T23:36:45.175+02:00  INFO 10524 --- [auction] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-23T23:36:46.137+02:00  WARN 10524 --- [auction] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-23T23:36:46.187+02:00  INFO 10524 --- [auction] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2025-04-23T23:36:46.188+02:00  WARN 10524 --- [auction] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-23T23:36:47.287+02:00  INFO 10524 --- [auction] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-04-23T23:36:47.288+02:00  INFO 10524 --- [auction] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@538fb761]]
+2025-04-23T23:36:47.291+02:00  INFO 10524 --- [auction] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-04-23T23:36:47.332+02:00  INFO 10524 --- [auction] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-23T23:36:47.352+02:00  INFO 10524 --- [auction] [main] com.mirs.auction.AuctionApplication      : Started AuctionApplication in 10.658 seconds (process running for 12.053)

@@ -78,7 +78,7 @@ public class AuctionController {
     // ————— Gestion centralisée des exceptions métiers —————
 
     @ExceptionHandler({ IllegalArgumentException.class, IllegalStateException.class })
-    public ResponseEntity<String> handleBadRequest(RuntimeException ex) {
+    public ResponseEntity<String> handleError(RuntimeException ex) {
         // Renvoie 400 + message d'erreur
         return ResponseEntity
                 .badRequest()
