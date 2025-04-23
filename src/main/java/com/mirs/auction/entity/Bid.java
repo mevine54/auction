@@ -1,6 +1,7 @@
 package com.mirs.auction.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,8 +11,8 @@ public class Bid {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bidId;
 
-    @Column(name = "bid_amount", nullable = false)
-    private Double bidAmount;
+    @Column(name = "bid_amount", precision = 10, scale = 2, nullable = false)
+    private BigDecimal bidAmount;
 
     @Column(name = "bid_time", nullable = false)
     private LocalDateTime bidTime = LocalDateTime.now();
@@ -22,36 +23,22 @@ public class Bid {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
-    private User bidder;
+    private User user;
 
-    public Long getBidId() {
-        return bidId;
-    }
-    public void setBidId(Long bidId) {
-        this.bidId = bidId;
-    }
-    public Double getBidAmount() {
-        return bidAmount;
-    }
-    public void setBidAmount(Double bidAmount) {
-        this.bidAmount = bidAmount;
-    }
-    public LocalDateTime getBidTime() {
-        return bidTime;
-    }
-    public void setBidTime(LocalDateTime bidTime) {
-        this.bidTime = bidTime;
-    }
-    public Auction getAuction() {
-        return auction;
-    }
-    public void setAuction(Auction auction) {
-        this.auction = auction;
-    }
-    public User getBidder() {
-        return bidder;
-    }
-    public void setBidder(User bidder) {
-        this.bidder = bidder;
-    }
+    // — Getters & Setters —
+
+    public Long getBidId() { return bidId; }
+    public void setBidId(Long id) { this.bidId = id; }
+
+    public BigDecimal getBidAmount() { return bidAmount; }
+    public void setBidAmount(BigDecimal amt) { this.bidAmount = amt; }
+
+    public LocalDateTime getBidTime() { return bidTime; }
+    public void setBidTime(LocalDateTime t) { this.bidTime = t; }
+
+    public Auction getAuction() { return auction; }
+    public void setAuction(Auction a) { this.auction = a; }
+
+    public User getUser() { return user; }
+    public void setUser(User u) { this.user = u; }
 }

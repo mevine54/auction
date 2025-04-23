@@ -1,31 +1,46 @@
 package com.mirs.auction.dto;
 
 import com.mirs.auction.entity.User;
+import jakarta.validation.constraints.*;
 
 /**
  * Data Transfer Object pour l'inscription et l'authentification.
  */
 public class UserDTO {
     private Long userId;
+
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String userName;
+
+    @NotBlank
+    @Email
     private String userEmail;
+
+    @NotBlank
+    @Pattern(
+            regexp     = "^(?=.*[A-Z])(?=.*\\d).{8,}$",
+            message    = "8 chars min., 1 majuscule et 1 chiffre requis"
+    )
     private String userPassword;
+
+    // Facultatif : on peut quand même contrôler la longueur
+    @Size(max = 30)
     private String userPhone;
 
     public UserDTO() {}
 
-    // Constructeur à partir de l'entité
+    // Constructeur à partir de l’entité
     public static UserDTO fromEntity(User user) {
         UserDTO dto = new UserDTO();
         dto.setUserId(user.getUserId());
         dto.setUserName(user.getUserName());
         dto.setUserEmail(user.getUserEmail());
-        // Ne jamais renvoyer le mot de passe en clair dans un DTO de réponse !
         dto.setUserPhone(user.getUserPhone());
         return dto;
     }
 
-    // Conversion DTO → Entité (pour l'enregistrement)
+    // Conversion DTO → Entité (pour l’enregistrement)
     public User toEntity() {
         User user = new User();
         user.setUserName(this.userName);

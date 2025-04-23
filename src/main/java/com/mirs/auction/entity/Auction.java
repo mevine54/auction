@@ -1,6 +1,7 @@
 package com.mirs.auction.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,17 +17,17 @@ public class Auction {
     @Column(name = "auc_end_time", nullable = false)
     private LocalDateTime aucEndTime;
 
-    @Column(name = "auc_current_bid")
-    private Double aucCurrentBid = 0.0;
+    @Column(name = "auc_current_bid", precision = 10, scale = 2, nullable = false)
+    private BigDecimal aucCurrentBid = BigDecimal.ZERO;
 
     @ManyToOne
     @JoinColumn(name = "auc_last_bidder_id")
     private User aucLastBidder;
 
-    @Column(name = "auc_final_price")
-    private Double aucFinalPrice;
+    @Column(name = "auc_final_price", precision = 10, scale = 2)
+    private BigDecimal aucFinalPrice;
 
-    @Column(name = "auc_status")
+    @Column(name = "auc_status", nullable = false)
     private String aucStatus = "en cours";
 
     @ManyToOne(optional = false)
@@ -37,58 +38,37 @@ public class Auction {
     @JoinColumn(name = "lot_id")
     private Lot lot;
 
-    public Long getAucId() {
-        return aucId;
-    }
-    public void setAucId(Long aucId) {
-        this.aucId = aucId;
-    }
-    public LocalDateTime getAucStartTime() {
-        return aucStartTime;
-    }
-    public void setAucStartTime(LocalDateTime aucStartTime) {
-        this.aucStartTime = aucStartTime;
-    }
-    public LocalDateTime getAucEndTime() {
-        return aucEndTime;
-    }
-    public void setAucEndTime(LocalDateTime aucEndTime) {
-        this.aucEndTime = aucEndTime;
-    }
-    public Double getAucCurrentBid() {
-        return aucCurrentBid;
-    }
-    public void setAucCurrentBid(Double aucCurrentBid) {
-        this.aucCurrentBid = aucCurrentBid;
-    }
-    public User getAucLastBidder() {
-        return aucLastBidder;
-    }
-    public void setAucLastBidder(User aucLastBidder) {
-        this.aucLastBidder = aucLastBidder;
-    }
-    public Double getAucFinalPrice() {
-        return aucFinalPrice;
-    }
-    public void setAucFinalPrice(Double aucFinalPrice) {
-        this.aucFinalPrice = aucFinalPrice;
-    }
-    public String getAucStatus() {
-        return aucStatus;
-    }
-    public void setAucStatus(String aucStatus) {
-        this.aucStatus = aucStatus;
-    }
-    public User getCreator() {
-        return creator;
-    }
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-    public Lot getLot() {
-        return lot;
-    }
-    public void setLot(Lot lot) {
-        this.lot = lot;
+    // — Getters & Setters —
+
+    public Long getAucId() { return aucId; }
+    public void setAucId(Long id) { this.aucId = id; }
+
+    public LocalDateTime getAucStartTime() { return aucStartTime; }
+    public void setAucStartTime(LocalDateTime t) { this.aucStartTime = t; }
+
+    public LocalDateTime getAucEndTime() { return aucEndTime; }
+    public void setAucEndTime(LocalDateTime t) { this.aucEndTime = t; }
+
+    public BigDecimal getAucCurrentBid() { return aucCurrentBid; }
+    public void setAucCurrentBid(BigDecimal b) { this.aucCurrentBid = b; }
+
+    public User getAucLastBidder() { return aucLastBidder; }
+    public void setAucLastBidder(User u) { this.aucLastBidder = u; }
+
+    public BigDecimal getAucFinalPrice() { return aucFinalPrice; }
+    public void setAucFinalPrice(BigDecimal p) { this.aucFinalPrice = p; }
+
+    public String getAucStatus() { return aucStatus; }
+    public void setAucStatus(String s) { this.aucStatus = s; }
+
+    public User getCreator() { return creator; }
+    public void setCreator(User c) { this.creator = c; }
+
+    public Lot getLot() { return lot; }
+    public void setLot(Lot l) { this.lot = l; }
+
+    /** Renvoie l’ID du dernier enchérisseur, ou null s’il n’y en a pas. */
+    public Long getAucLastBidderId() {
+        return (aucLastBidder != null ? aucLastBidder.getUserId() : null);
     }
 }
